@@ -1,0 +1,11 @@
+Prelude tail :: [a] -> [a]
+Prelude init :: [a] -> [a]
+Prelude reverse :: [a] -> [a]
+Prelude cycle :: [a] -> [a]
+Data.List tail :: [a] -> [a]
+Data.List init :: [a] -> [a]
+Data.List reverse :: [a] -> [a]
+Data.List cycle :: [a] -> [a]
+GHC.OldList tail :: [a] -> [a]
+GHC.OldList init :: [a] -> [a]
+-- plus more results not shown, pass --count=20 to see more
