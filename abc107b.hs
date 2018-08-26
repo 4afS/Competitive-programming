@@ -1,16 +1,12 @@
 import Control.Monad
 
 main = do
-    (h:w:_) <- map read . words <$> getLine :: IO [Int]
+    (h:_:_) <- map read . words <$> getLine :: IO [Int]
     xs <- replicateM h getLine
-    mapM_ putStrLn . transpose . compress w . transpose $ compress h xs
+    mapM_ putStrLn . transpose . compress . transpose $ compress xs
 
-compress :: Int -> [String] -> [String]
-compress 0 _ = []
-compress _ [] = []
-compress n (x:xs)
-  | all (=='.') x = compress (n-1) xs
-  | otherwise = x : compress (n-1) xs
+compress :: [String] -> [String]
+compress = filter(\x -> '#' `elem` x)
 
 transpose :: [String] -> [String]
 transpose xs = transpose' (length (head xs)) xs

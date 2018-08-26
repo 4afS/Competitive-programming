@@ -2,20 +2,9 @@ import sys
 # 再帰の回数に上限があるのでそれを上げる
 sys.setrecursionlimit(100000)
  
-# 全てが"."の行を削除する
+# "#"が含まれた行だけを取り出す
 def compress(a):
-    del_index = []
-    for i in range(len(a)):
-
-# 対象となるリスト内要素全てが"."と一致するか見る(mapでTrue, Falseに変換 -> allはその配列の要素が全てがTrueのときのみTrueを返す
-        if all(map(lambda x: x=='.', a[i])):
-            del_index.append(i)
-
-# 後ろから消していかないとエラーが起きる
-    for i in del_index[::-1]:
-        del a[i]
-
-    return a
+    return [l for l in a if any(map(lambda x: x=='#', l))]
 
 # 行列を縦横入れ替える 
 def transpose(a):
