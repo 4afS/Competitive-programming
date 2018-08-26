@@ -1,17 +1,14 @@
-import sys
-sys.setrecursionlimit(100000)
- 
 def compress(a):
     return [l for l in a if any(map(lambda x: x=='#', l))]
 
 def transpose(a):
-    if len(a[0]) == 1:
-        return [''.join(list(map(lambda x: x[0], a)))]
-    else:
-        return [''.join(list(map(lambda x: x[0], a)))] + transpose(list(map(lambda x: x[1:], a)))
+    return [''.join(list(l)) for l in zip(*a)]
 
-h, w = map(int, input().split())
-a = [input() for i in range(h)]
+def main():
+    h, w = map(int, input().split())
+    a = [input() for i in range(h)]
+    result = transpose(compress(transpose(compress(a))))
+    [print(x) for x in result]
 
-result = transpose(compress(transpose(compress(a))))
-[print(x) for x in result]
+if __name__ == '__main__':
+    main()
